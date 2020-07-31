@@ -4,6 +4,6 @@
 image = lagerdata/devenv-cortexm
 mount_dir = /app
 shell = /bin/bash
-cmd.cmake-build = mkdir -p _build; cd _build ; cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake;cmake --build .
+cmd.cmake-build = mkdir -p _build; cd _build ; cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake;cmake --build . --target blue42_test1
 cmd.cmake-clean = rm -rf _build
 

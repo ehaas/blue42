@@ -2,8 +2,8 @@
 #
 ########################################
 # This connects to a GDB Server listening
-# for commands on localhost at tcp port 2331
-target remote dev.lagerdata.app:2159
+# for commands on localhost at tcp port 3333
+target remote localhost:3333
 ########################################
 
 

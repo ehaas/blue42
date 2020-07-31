@@ -16,7 +16,7 @@ target_compile_definitions(blue42_test1 PRIVATE $<$<COMPILE_LANGUAGE:ASM>:__HEAP
 
 
 target_link_libraries(blue42_test1 unityTest)
-target_link_libraries(blue42 nrf52)
+target_link_libraries(blue42_test1 nrf52)
 
 
 

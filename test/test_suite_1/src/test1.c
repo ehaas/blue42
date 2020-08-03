@@ -45,14 +45,9 @@ void test_thatSucceeds(void)
 	TEST_PASS_MESSAGE("This test passed");
 }
 
-void test_succeedsWithCondition(void)
-{
-	TEST_ASSERT_EQUAL_INT(42, 42);
-}
-
 void test_Numbers(void)
 {
-	TEST_ASSERT_EQUAL_INT(43, 43);
+	TEST_ASSERT_EQUAL_INT(42, 43);
 }
 
 

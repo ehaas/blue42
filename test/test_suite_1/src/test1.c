@@ -37,7 +37,7 @@ void tearDown(void)
 
 void test_freertosSystickCorrectFreq(void)
 {
-    TEST_FAIL();
+    // TEST_FAIL();
 }
 
 void test_thatSucceeds(void)
@@ -47,7 +47,7 @@ void test_thatSucceeds(void)
 
 void test_Numbers(void)
 {
-	TEST_ASSERT_EQUAL_INT(42, 42);
+	TEST_ASSERT_EQUAL_INT(42, 43);
 }
 
 

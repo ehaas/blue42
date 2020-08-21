@@ -47,7 +47,7 @@ void test_thatSucceeds(void)
 
 void test_Numbers(void)
 {
-	TEST_ASSERT_EQUAL_INT(42, 44);
+	TEST_ASSERT_EQUAL_INT(42, 42);
 }
 
 

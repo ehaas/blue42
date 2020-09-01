@@ -43,5 +43,3 @@ steps:
   depends_on:
   - flash-moose
   - flash-jaguar
-  commands:
-  - echo "Done"

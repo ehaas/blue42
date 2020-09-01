@@ -33,7 +33,7 @@ steps:
 - name: flash-jaguar
   image: lagerdata/devenv-cortexm
   commands:
-  - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jaguar
+  - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jagua
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway jovial-jaguar
   depends_on:
   - build

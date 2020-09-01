@@ -12,23 +12,31 @@ steps:
   image: alpine/git
   commands:
   - git submodule update --init --recursive
+  depends_on:
+  - clone
 
 - name: build
   image: lagerdata/devenv-cortexm
   commands:
   - lager exec cmake-build
+  depends_on:
+  - submodules
 
 - name: flash-moose
   image: lagerdata/devenv-cortexm
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex  --gateway majestic-moose
+  depends_on:
+  - build
 
 - name: flash-jaguar
   image: lagerdata/devenv-cortexm
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jaguar
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex  --gateway jovial-jaguar
+  depends_on:
+  - build
 
 - name: notify
   image: lagerdata/devenv-cortexm

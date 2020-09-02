@@ -14,6 +14,9 @@ steps:
   - git submodule update --init --recursive
   depends_on:
   - clone
+  when:
+    branch:
+      - feature/*
 
 - name: build
   image: lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5

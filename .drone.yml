@@ -24,7 +24,7 @@ steps:
   - submodules
 
 - name: flash-moose
-  image: lagerdata/devenv-cortexm
+  image: lagerdata/lager-cli
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_mpu9250_drv/blue42_test_mpu9250_drv.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway majestic-moose
@@ -32,7 +32,7 @@ steps:
   - build
 
 - name: flash-jaguar
-  image: lagerdata/devenv-cortexm
+  image: lagerdata/lager-cli
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jaguar
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway jovial-jaguar
@@ -40,7 +40,7 @@ steps:
   - build
 
 - name: notify
-  image: lagerdata/devenv-cortexm
+  image: lagerdata/lager-cli
   depends_on:
   - flash-moose
   - flash-jaguar

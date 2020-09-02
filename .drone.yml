@@ -16,7 +16,7 @@ steps:
   - clone
 
 - name: build
-  image: lagerdata/devenv-cortexm
+  image: lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
   commands:
   - lager exec cmake-test1
   - lager exec cmake-mpudrv
@@ -24,7 +24,7 @@ steps:
   - submodules
 
 - name: flash-moose
-  image: lagerdata/lager-cli
+  image: lagerdata/lager-cli:v0.1.26
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_mpu9250_drv/blue42_test_mpu9250_drv.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway majestic-moose
@@ -32,7 +32,7 @@ steps:
   - build
 
 - name: flash-jaguar
-  image: lagerdata/lager-cli
+  image: lagerdata/lager-cli:v0.1.26
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jaguar
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway jovial-jaguar
@@ -40,7 +40,7 @@ steps:
   - build
 
 - name: notify
-  image: lagerdata/lager-cli
+  image: lagerdata/lager-cli:v0.1.26
   depends_on:
   - flash-moose
   - flash-jaguar

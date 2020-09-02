@@ -18,7 +18,8 @@ steps:
 - name: build
   image: lagerdata/devenv-cortexm
   commands:
-  - lager exec cmake-build
+  - lager exec cmake-test1
+  - lager exec cmake-mpudrv
   depends_on:
   - submodules
 
@@ -26,14 +27,14 @@ steps:
   image: lagerdata/devenv-cortexm
   commands:
   - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
-  - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway majestic-moose
+  - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_mpu9250_drv/blue42_test_mpu9250_drv.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway majestic-moose
   depends_on:
   - build
 
 - name: flash-jaguar
   image: lagerdata/devenv-cortexm
   commands:
-  - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jagua
+  - lager connect --device nrf52 --interface ftdi --transport swd --force --gateway jovial-jaguar
   - lager testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_1/blue42_test1.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway jovial-jaguar
   depends_on:
   - build

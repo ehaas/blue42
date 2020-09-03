@@ -44,7 +44,3 @@ steps:
   depends_on:
   - flash-moose
   - flash-jaguar
-
-trigger:
-  branch:
-  - feature/*

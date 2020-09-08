@@ -23,7 +23,7 @@ jobs:
           args: exec cmake-mpudrv
 
       - name: Connect moose
-        uses: docker://lagerdata/lager-cli:v0.1.29
+        uses: docker://lagerdata/lager-cli:v0.1.30
         env:
           LAGER_SECRET_TOKEN: ${{ secrets.LAGER_SECRET_TOKEN }}
         with:
@@ -31,7 +31,7 @@ jobs:
           args: connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
 
       - name: Testrun moose
-        uses: docker://lagerdata/lager-cli:v0.1.29
+        uses: docker://lagerdata/lager-cli:v0.1.30
         env:
           LAGER_SECRET_TOKEN: ${{ secrets.LAGER_SECRET_TOKEN }}
         with:

@@ -11,19 +11,19 @@ jobs:
           submodules: 'recursive'
 
       - name: Build test1
-        uses: docker://lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
+        uses: docker://lagerdata/devenv-cortexm@sha256:60a0deea0522d8976e5adba70811d57cde6ea2caa2fc395e099201aa3dd6a295
         with:
           entrypoint: lager
           args: exec cmake-test1
 
       - name: Build mpudrv
-        uses: docker://lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
+        uses: docker://lagerdata/devenv-cortexm@sha256:60a0deea0522d8976e5adba70811d57cde6ea2caa2fc395e099201aa3dd6a295
         with:
           entrypoint: lager
           args: exec cmake-mpudrv
 
       - name: Connect moose
-        uses: docker://lagerdata/lager-cli:v0.1.30
+        uses: docker://lagerdata/lager-cli:v0.1.31
         env:
           LAGER_SECRET_TOKEN: ${{ secrets.LAGER_SECRET_TOKEN }}
         with:
@@ -31,7 +31,7 @@ jobs:
           args: connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
 
       - name: Testrun moose
-        uses: docker://lagerdata/lager-cli:v0.1.30
+        uses: docker://lagerdata/lager-cli:v0.1.31
         env:
           LAGER_SECRET_TOKEN: ${{ secrets.LAGER_SECRET_TOKEN }}
         with:

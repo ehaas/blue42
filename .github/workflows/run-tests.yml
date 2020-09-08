@@ -30,7 +30,8 @@ jobs:
         uses: docker://lagerdata/lager-cli:v0.1.26
         env:
           LAGER_TOKEN_TYPE: 'secret'
-          LAGER_AUTH_TOKEN: ${{ secrets.LAGER_AUTH_TOKEN }}
+          LAGER_AUTH_TOKEN: 'false'
+          LAGER_REFRESH_TOKEN: ${{ secrets.LAGER_REFRESH_TOKEN }}
         with:
           entrypoint: lager
           args: connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose

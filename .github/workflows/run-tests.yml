@@ -38,6 +38,10 @@ jobs:
 
       - name: Testrun moose
         uses: docker://lagerdata/lager-cli:v0.1.26
+        env:
+          LAGER_TOKEN_TYPE: 'bearer'
+          LAGER_AUTH_TOKEN: 'false'
+          LAGER_REFRESH_TOKEN: ${{ secrets.LAGER_REFRESH_TOKEN }}
         with:
           entrypoint: lager
           args: testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_mpu9250_drv/blue42_test_mpu9250_drv.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway majestic-moose

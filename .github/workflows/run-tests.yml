@@ -12,36 +12,28 @@ jobs:
 
       - name: Build test1
         uses: docker://lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
-        env:
-          DRONE: 'true'
         with:
           entrypoint: lager
           args: exec cmake-test1
 
       - name: Build mpudrv
         uses: docker://lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
-        env:
-          DRONE: 'true'
         with:
           entrypoint: lager
           args: exec cmake-mpudrv
 
       - name: Connect moose
-        uses: docker://lagerdata/lager-cli:v0.1.26
+        uses: docker://lagerdata/lager-cli:v0.1.29
         env:
-          LAGER_TOKEN_TYPE: 'bearer'
-          LAGER_AUTH_TOKEN: 'false'
-          LAGER_REFRESH_TOKEN: ${{ secrets.LAGER_REFRESH_TOKEN }}
+          LAGER_SECRET_TOKEN: ${{ secrets.LAGER_SECRET_TOKEN }}
         with:
           entrypoint: lager
           args: connect --device nrf52 --interface ftdi --transport swd --force --gateway majestic-moose
 
       - name: Testrun moose
-        uses: docker://lagerdata/lager-cli:v0.1.26
+        uses: docker://lagerdata/lager-cli:v0.1.29
         env:
-          LAGER_TOKEN_TYPE: 'bearer'
-          LAGER_AUTH_TOKEN: 'false'
-          LAGER_REFRESH_TOKEN: ${{ secrets.LAGER_REFRESH_TOKEN }}
+          LAGER_SECRET_TOKEN: ${{ secrets.LAGER_SECRET_TOKEN }}
         with:
           entrypoint: lager
           args: testrun --serial-device /dev/ttyACM0 --hexfile _build/test/test_suite_mpu9250_drv/blue42_test_mpu9250_drv.hex --hexfile third_party/nRF5_SDK_17.0.0_9d13099/components/softdevice/s140/hex/s140_nrf52_7.0.1_softdevice.hex --gateway majestic-moose

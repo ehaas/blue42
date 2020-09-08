@@ -10,8 +10,14 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Build
-        uses: lagerdata/lager-cli:v0.1.26
-        run: |
-          lager exec cmake-test1
-          lager exec cmake-mpudrv
+      - name: Build test1
+        uses: docker://lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
+        with:
+          entrypoint: lager
+          args: exec cmake-test1
+
+      - name: Build mpudrv
+        uses: docker://lagerdata/devenv-cortexm@sha256:9cce1797fc32e57d797da8b6809b1176ee1c3a7eb89302bc1a9057b7638f70d5
+        with:
+          entrypoint: lager
+          args: exec cmake-mpudrv
